@@ -16,7 +16,7 @@ can focus on their product instead of re-implementing the same plumbing.
 
 ## Prerequisites
 
-- Node.js 18.17 or newer
+- Node.js 25.0.0 or newer
 - pnpm 10.x (`corepack enable` will pick it up automatically)
 - Git
 

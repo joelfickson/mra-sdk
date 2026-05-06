@@ -15,7 +15,7 @@
   "author": "Joel Fickson <joel@sekuire.ai>",
   "packageManager": "pnpm@10.33.0",
   "engines": {
-    "node": ">=18.17"
+    "node": ">=25.0.0"
   },
   "scripts": {
     "build": "pnpm -r --filter './packages/*' --filter './tools/*' --filter './examples/*' run build",
@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "typescript": "^5.6.3",
-    "@types/node": "^22.9.0",
+    "@types/node": "^25.0.0",
     "@changesets/cli": "^2.27.10"
   }
 }

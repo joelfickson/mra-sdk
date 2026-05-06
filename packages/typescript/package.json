@@ -44,7 +44,7 @@
     "LICENSE"
   ],
   "engines": {
-    "node": ">=18.17"
+    "node": ">=25.0.0"
   },
   "scripts": {
     "prebuild": "node ../../tools/codegen/index.mjs",
@@ -57,7 +57,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@types/node": "^22.9.0",
+    "@types/node": "^25.0.0",
     "tsup": "^8.3.5",
     "typescript": "^5.6.3",
     "vitest": "^2.1.5"

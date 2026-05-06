@@ -1,8 +1,5 @@
 name: Release
 
-# Manual-only. Trigger from the Actions tab once an `NPM_TOKEN` secret is set
-# and you're ready to cut a version. The `Actions -> Release -> Run workflow`
-# button kicks off this job; nothing publishes on regular pushes.
 on:
   workflow_dispatch:
     inputs:
@@ -22,13 +19,13 @@ jobs:
       contents: read
       id-token: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v6
         with:
           version: 10.33.0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '25'
           cache: pnpm
           registry-url: 'https://registry.npmjs.org'
       - run: pnpm install --frozen-lockfile
@@ -38,7 +35,7 @@ jobs:
       - run: pnpm test
       - name: Pack tarball (always - useful artifact for inspection)
         run: pnpm --filter mra-sdk pack --pack-destination "$RUNNER_TEMP"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: mra-sdk-tarball
           path: ${{ runner.temp }}/mra-sdk-*.tgz

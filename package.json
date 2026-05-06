@@ -1,0 +1,36 @@
+{
+  "name": "mra-sdk",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Open-source SDKs for the Malawi Revenue Authority Electronic Invoicing System (EIS) API",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joelfickson/mra-sdk.git"
+  },
+  "homepage": "https://github.com/joelfickson/mra-sdk",
+  "bugs": {
+    "url": "https://github.com/joelfickson/mra-sdk/issues"
+  },
+  "license": "MIT",
+  "author": "Joel Fickson <joel@sekuire.ai>",
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "build": "pnpm -r --filter './packages/*' --filter './tools/*' --filter './examples/*' run build",
+    "test": "pnpm -r --filter './packages/*' run test",
+    "typecheck": "pnpm -r --filter './packages/*' --filter './tools/*' --filter './examples/*' run typecheck",
+    "lint": "pnpm -r run lint",
+    "codegen": "pnpm --filter @mra-sdk/codegen run start",
+    "spec:diff": "node tools/codegen/spec-diff.mjs",
+    "dev:mock": "pnpm --filter @mra-sdk/mock-server run start",
+    "changeset": "changeset",
+    "release": "pnpm -w build && changeset publish"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "@types/node": "^22.9.0",
+    "@changesets/cli": "^2.27.10"
+  }
+}

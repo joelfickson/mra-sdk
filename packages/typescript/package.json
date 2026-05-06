@@ -1,0 +1,68 @@
+{
+  "name": "@joelfickson/mra-eis-sdk",
+  "version": "0.1.0-alpha.0",
+  "description": "TypeScript SDK for the Malawi Revenue Authority Electronic Invoicing System (EIS) API",
+  "license": "MIT",
+  "author": "Joel Fickson <joel@sekuire.ai>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joelfickson/mra-sdk.git",
+    "directory": "packages/typescript"
+  },
+  "homepage": "https://github.com/joelfickson/mra-sdk/tree/main/packages/typescript",
+  "bugs": {
+    "url": "https://github.com/joelfickson/mra-sdk/issues"
+  },
+  "keywords": [
+    "mra",
+    "malawi",
+    "tax",
+    "invoicing",
+    "eis",
+    "fiscalization",
+    "pos"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./raw": {
+      "types": "./dist/raw.d.ts",
+      "import": "./dist/raw.js",
+      "require": "./dist/raw.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "prebuild": "node ../../tools/codegen/index.mjs",
+    "build": "tsup",
+    "pretest": "node ../../tools/codegen/index.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo 'lint not configured yet' && exit 0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

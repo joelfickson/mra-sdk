@@ -1,0 +1,14 @@
+{
+  "name": "@mra-sdk/mock-server",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "prism mock -p 4010 -d ../../spec/swagger.json",
+    "build": "echo 'no build step' && exit 0",
+    "typecheck": "echo 'no typecheck' && exit 0"
+  },
+  "dependencies": {
+    "@stoplight/prism-cli": "^5.12.1"
+  }
+}

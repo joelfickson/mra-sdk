@@ -1,0 +1,14 @@
+{
+  "name": "@mra-sdk/codegen",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node index.mjs",
+    "build": "echo 'no build step' && exit 0",
+    "typecheck": "echo 'no typecheck' && exit 0"
+  },
+  "dependencies": {
+    "openapi-typescript": "^7.4.4"
+  }
+}

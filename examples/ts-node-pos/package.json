@@ -9,7 +9,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@joelfickson/mra-eis-sdk": "workspace:*"
+    "mra-sdk": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^22.9.0",

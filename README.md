@@ -8,7 +8,7 @@ This is an unofficial, community-maintained project. It is not affiliated with t
 
 | Package | Status | Registry |
 | --- | --- | --- |
-| `@joelfickson/mra-eis-sdk` (TypeScript) | In development | npm (unpublished) |
+| `mra-sdk` (TypeScript) | In development | npm (unpublished) |
 | Python | Planned | - |
 | .NET | Planned | - |
 
@@ -25,7 +25,7 @@ This is an unofficial, community-maintained project. It is not affiliated with t
 
 ```
 spec/                 Vendored swagger.json (source of truth) + fixtures
-packages/typescript/  @joelfickson/mra-eis-sdk
+packages/typescript/  mra-sdk
 packages/python/      Placeholder for future Python SDK
 packages/dotnet/      Placeholder for future .NET SDK
 tools/codegen/        Generates typed transport from spec/swagger.json

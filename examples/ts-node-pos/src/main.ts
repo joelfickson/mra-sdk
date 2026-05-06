@@ -8,8 +8,8 @@ import {
   MraEis,
   MraOfflineQueuedError,
   MraValidationError,
-} from '@joelfickson/mra-eis-sdk';
-import type { components } from '@joelfickson/mra-eis-sdk/raw';
+} from 'mra-sdk';
+import type { components } from 'mra-sdk/raw';
 
 type UnActivatedTerminal = components['schemas']['UnActivatedTerminal'];
 type SalesInvoice = components['schemas']['SalesInvoice'];

@@ -1,4 +1,4 @@
-// Public API entry point for @joelfickson/mra-eis-sdk.
+// Public API entry point for mra-sdk.
 
 export * from './http/index.js';
 export * from './auth/index.js';

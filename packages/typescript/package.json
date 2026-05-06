@@ -1,5 +1,5 @@
 {
-  "name": "@joelfickson/mra-eis-sdk",
+  "name": "mra-sdk",
   "version": "0.1.0-alpha.0",
   "description": "TypeScript SDK for the Malawi Revenue Authority Electronic Invoicing System (EIS) API",
   "license": "MIT",
@@ -63,6 +63,6 @@
     "vitest": "^2.1.5"
   },
   "publishConfig": {
-    "access": "public"
+    "provenance": true
   }
 }

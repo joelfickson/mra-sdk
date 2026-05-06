@@ -15,7 +15,7 @@ hitting real MRA infrastructure.
 To point the SDK at the mock:
 
 ```ts
-import { MraEis } from '@joelfickson/mra-eis-sdk';
+import { MraEis } from 'mra-sdk';
 
 const client = new MraEis({ baseUrl: 'http://localhost:4010' });
 ```

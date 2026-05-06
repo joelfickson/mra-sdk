@@ -1,5 +1,5 @@
 {
-  "name": "mra-sdk",
+  "name": "mra-sdk-monorepo",
   "version": "0.0.0",
   "private": true,
   "description": "Open-source SDKs for the Malawi Revenue Authority Electronic Invoicing System (EIS) API",
@@ -25,8 +25,7 @@
     "codegen": "pnpm --filter @mra-sdk/codegen run start",
     "spec:diff": "node tools/codegen/spec-diff.mjs",
     "dev:mock": "pnpm --filter @mra-sdk/mock-server run start",
-    "changeset": "changeset",
-    "release": "pnpm -w build && changeset publish"
+    "changeset": "changeset"
   },
   "devDependencies": {
     "typescript": "^5.6.3",

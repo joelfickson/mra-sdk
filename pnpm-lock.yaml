@@ -20,7 +20,7 @@ importers:
 
   examples/ts-node-pos:
     dependencies:
-      '@joelfickson/mra-eis-sdk':
+      mra-sdk:
         specifier: workspace:*
         version: link:../../packages/typescript
     devDependencies:

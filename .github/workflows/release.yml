@@ -1,8 +1,15 @@
 name: Release
 
+# Manual-only. Trigger from the Actions tab once an `NPM_TOKEN` secret is set
+# and you're ready to cut a version. The `Actions -> Release -> Run workflow`
+# button kicks off this job; nothing publishes on regular pushes.
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (build + pack, do not publish)'
+        type: boolean
+        default: false
 
 concurrency:
   group: release
@@ -12,8 +19,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
+      contents: read
       id-token: write
     steps:
       - uses: actions/checkout@v4
@@ -30,26 +36,21 @@ jobs:
       - run: pnpm build
       - run: pnpm typecheck
       - run: pnpm test
-      - name: Detect NPM_TOKEN
-        id: token
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          if [ -n "$NPM_TOKEN" ]; then
-            echo "has_token=true" >> "$GITHUB_OUTPUT"
-            echo "NPM_TOKEN present - will publish if there are no pending changesets."
-          else
-            echo "has_token=false" >> "$GITHUB_OUTPUT"
-            echo "NPM_TOKEN not set - workflow will only manage the version PR."
-          fi
-      - name: Create release PR or publish
-        uses: changesets/action@v1
+      - name: Pack tarball (always - useful artifact for inspection)
+        run: pnpm --filter mra-sdk pack --pack-destination "$RUNNER_TEMP"
+      - uses: actions/upload-artifact@v4
         with:
-          publish: ${{ steps.token.outputs.has_token == 'true' && 'pnpm release' || '' }}
-          version: pnpm changeset version
-          commit: 'chore: version packages'
-          title: 'Release: version packages'
+          name: mra-sdk-tarball
+          path: ${{ runner.temp }}/mra-sdk-*.tgz
+      - name: Publish to npm
+        if: ${{ inputs.dry_run == false }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: 'true'
+        run: |
+          if [ -z "$NPM_TOKEN" ]; then
+            echo "::error::NPM_TOKEN secret is not set. Add it via 'gh secret set NPM_TOKEN' before re-running."
+            exit 1
+          fi
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+          pnpm --filter mra-sdk publish --no-git-checks --access public

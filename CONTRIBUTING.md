@@ -38,7 +38,7 @@ please open an issue.
 
 ```
 spec/                   Vendored swagger.json - the source of truth
-packages/typescript/    @joelfickson/mra-eis-sdk (the v1 deliverable)
+packages/typescript/    mra-sdk (the v1 deliverable)
 packages/python/        Placeholder for a future Python SDK
 packages/dotnet/        Placeholder for a future .NET SDK
 tools/codegen/          Regenerates typed transport from spec/swagger.json
@@ -95,7 +95,7 @@ To pull a new upstream version:
   `MraError` taxonomy with explicit kinds
 - Domain types are hand-curated in `packages/typescript/src/types/` (when
   added); generated DTOs stay under `src/generated/` and are re-exported via
-  `@joelfickson/mra-eis-sdk/raw` for escape hatches
+  `mra-sdk/raw` for escape hatches
 
 ## Tests
 
